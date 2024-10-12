@@ -1,4 +1,4 @@
-package com.github.kospiotr;
+package com.github.kospiotr.javakata;
 
 public class Main {
     public static void main(String[] args) {
