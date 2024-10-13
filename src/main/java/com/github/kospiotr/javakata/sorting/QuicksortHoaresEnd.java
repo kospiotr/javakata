@@ -1,10 +1,11 @@
 package com.github.kospiotr.javakata.sorting;
 
 
+import com.github.kospiotr.javakata.ArryaysSupport;
+import com.github.kospiotr.javakata.logging.ArrayLogging;
 import lombok.extern.slf4j.Slf4j;
 
 import static com.github.kospiotr.javakata.ArryaysSupport.swap;
-import static com.github.kospiotr.javakata.logging.ArrayLogging.printArray;
 import static com.github.kospiotr.javakata.logging.ArrayLogging.subArray;
 
 @Slf4j
@@ -14,36 +15,20 @@ public class QuicksortHoaresEnd {
         quicksort(array, 0, array.length - 1);
     }
 
-    private static void quicksort(int[] array, int hi, int lo) {
-        log.info("Sorting A={} L={} R={}", subArray(array, hi, lo), hi, lo);
-        if (hi >= lo || hi < 0) return;
-
-        int pi = partition(array, hi, lo);
-        log.info("Partition result A={} P={} PI={} L={} R={}", array, array[pi], pi, hi, lo);
-        quicksort(array, hi, pi - 1);
-        quicksort(array, pi + 1, lo);
+    private static void quicksort(int[] array, int lo, int hi) {
+        if (lo >= hi || hi < 0) return;
+        int partitionIndex = partition(array, lo, hi);
+        quicksort(array, lo, partitionIndex - 1);
+        quicksort(array, partitionIndex + 1, hi);
     }
 
     private static int partition(int[] array, int lo, int hi) {
-        int pi = hi;
-        int pivot = array[pi];
-        log.info("Partition: L={} R={} P={} PI={}", lo, hi, pivot, pi);
+        int pivot = array[hi];
         while (true) {
-            while (array[lo] < pivot) {
-                lo++;
-                log.debug(printArray(array, lo, hi));
-            }
-            while (array[hi] > pivot) {
-                hi--;
-                log.debug(printArray(array, lo, hi));
-            }
-            if (lo >= hi) {
-                return lo;
-            }
+            while (array[lo] < pivot) lo++;
+            while (array[hi] > pivot) hi--;
+            if (lo >= hi) return lo;
             swap(array, lo, hi);
-            log.debug(printArray(array, lo, hi));
         }
     }
-
-
 }
