@@ -1,9 +1,12 @@
 package com.github.kospiotr.javakata.logging;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.Arrays;
 
+@Slf4j
 public class ArrayLogging {
-    public static String arrayPointers(int[] array, int lo, int hi) {
+    public static String printArray(int[] array, int lo, int hi) {
         String out = "{";
         for (int i = 0; i < array.length; i++) {
             if (i == lo) out += "L[";

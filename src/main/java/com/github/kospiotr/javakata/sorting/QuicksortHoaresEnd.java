@@ -8,7 +8,7 @@ import static com.github.kospiotr.javakata.logging.ArrayLogging.printArray;
 import static com.github.kospiotr.javakata.logging.ArrayLogging.subArray;
 
 @Slf4j
-public class QuicksortHoaresMiddle {
+public class QuicksortHoaresEnd {
 
     public static void sort(int[] array) {
         quicksort(array, 0, array.length - 1);
@@ -25,7 +25,7 @@ public class QuicksortHoaresMiddle {
     }
 
     private static int partition(int[] array, int lo, int hi) {
-        int pi = lo + (hi - lo) / 2;
+        int pi = hi;
         int pivot = array[pi];
         log.info("Partition: L={} R={} P={} PI={}", lo, hi, pivot, pi);
         while (true) {

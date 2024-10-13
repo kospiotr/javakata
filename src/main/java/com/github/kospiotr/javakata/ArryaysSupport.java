@@ -2,7 +2,7 @@ package com.github.kospiotr.javakata;
 
 import lombok.extern.slf4j.Slf4j;
 
-import static com.github.kospiotr.javakata.logging.ArrayLogging.arrayPointers;
+import static com.github.kospiotr.javakata.logging.ArrayLogging.printArray;
 
 @Slf4j
 public class ArryaysSupport {
@@ -11,6 +11,5 @@ public class ArryaysSupport {
         int tmp = array[left];
         array[left] = array[right];
         array[right] = tmp;
-        log.info("A={}", arrayPointers(array, left, right));
     }
 }
